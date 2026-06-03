@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../../../user/menu/update/update.css">
+</head>
+<body>
+    <div id="background">
+    	<div id="header">
+    		<button onclick="location.href='../../../front?key=user&methodName=logout'" id="logOut" class="selectBtn">로그아웃</button>
+    	</div>
+    	
+	    <div id="select">
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllMenu'" id="menu" class="selectBtn">메뉴</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectSales&state=hour'" id="inform" class="selectBtn">정보</button>
+	    	<button id="qr" class="selectBtn">QR</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllOrder'" id="order" class="selectBtn">주문</button>
+	    </div>
+	    
+	    <div id="subselect">
+	    	<h2>
+				<button onclick="location.href='../../../front?key=user&methodName=selectAllMenu'"id="menus" class="selectBtn">목록</button>
+				<button onclick="location.href='../../../user/menu/insert/insert.html'" id="insert" class="selectBtn">추가</button>
+			</h2>	    
+	    </div>
+	    
+	    <div id="list">	
+			<form id="writeForm" name="writeForm" method="post" action="../../../front">
+				<input type="hidden" name="key" value = "user" />
+				<input type="hidden" name="methodName" value = "updateMenu" /> 
+				<input type="hidden" name="menuId" value="" /> 
+				<input type="hidden" name="storeId" value="" /> 
+				 
+				<div class="inputDiv">
+			 		<label for="name">메뉴명</label>
+			 		<input type="text" name="name" id="name" value="">
+		 		</div>
+		 		
+		 		<div class="inputDiv">
+			 		<label for="price">가격</label>
+			 		<input type="number" name="price" id="price" value="">
+		 		</div>
+		 		
+		 		<div class="inputDiv">
+			 		<label for="description">설명</label>
+			 		<input type="text" name="description" id="description" value="">
+		 		</div>
+		 		
+		 		<div class="inputDiv">
+			 		<label for="src">이미지</label>
+			 		<input type="url" name="src" id="src" value="">
+		 		</div>
+		 		
+		 		<div class="inputDiv">
+			 		<fieldset>
+			 			<legend>카테고리1</legend>
+					 		<label for=cat1opt1>분류1</label>
+					 		<input type="radio" name="category1Code" id="cat1opt1" value=1 >
+					 		<label for=cat1opt2>분류2</label>
+					 		<input type="radio" name="category1Code" id="cat1opt2" value=2 >
+					 		<label for=cat1opt3>분류3</label>
+					 		<input type="radio" name="category1Code" id="cat1opt3" value=3 ><br>
+			 		</fieldset>
+		 		</div>
+		 		
+		 		<div class="inputDiv">
+			 		<fieldset>
+			 			<legend>카테고리2</legend>
+				 		<label for="cat2opt1">분류1</label>
+				 		<input type="radio" name="category2Code" id="cat2opt1" value=1 >
+				 		<label for="cat2opt2">분류2</label>
+				 		<input type="radio" name="category2Code" id="cat2opt2" value=2 >
+				 		<label for="cat2opt3">분류3</label>
+				 		<input type="radio" name="category2Code" id="cat2opt3" value=3 ><br>
+			 		</fieldset>
+		 		</div>
+		 		
+		 		<div class="inputDiv">
+			 		<fieldset>
+			 			<legend>추천 여부</legend>
+				 		<label for="추천">추천</label>
+				 		<input type="radio" name="checkRec" id="추천" value="Y" >
+				 		<label for="일반">일반</label>
+				 		<input type="radio" name="checkRec" id="일반" value="N" ><br>
+			 		</fieldset>
+		 		</div>
+		 		
+		 		<div class="inputDiv">
+			 		<fieldset>
+			 			<legend>옵션</legend>
+				 		<label for="옵션1">옵션1</label>
+				 		<input type="checkbox" name="orderRequest" id="옵션1" value="옵션1" >
+				 		<label for="옵션2">옵션2</label>
+				 		<input type="checkbox" name="orderRequest" id="옵션2" value="옵션2" >>
+				 		<label for="옵션3">옵션3</label>
+				 		<input type="checkbox" name="orderRequest" id="옵션3" value="옵션3" >><br>
+			 		</fieldset>
+		 		</div>
+		 		
+		 		<div class="inputDiv">
+			 		<label for="closeTime">마감 시간</label>
+			 		<input type="time" name="closeTime" id="closeTime" value=""><br>
+		 		</div>
+		 		
+		 		<div class="inputDiv">
+			 		<fieldset>
+			 			<legend>옵션</legend>
+				 		<label for="마감">마감</label>
+				 		<input type="radio" name="soldOut" id="마감" value="Y" >
+				 		<label for="비마감">비마감</label>
+				 		<input type="radio" name="soldOut" id="비마감" value="N" ><br>
+			 		</fieldset>
+		 		</div>
+		 		
+		 		<input type="submit" id="inputSubmit">
+	 		</form>
+	    </div>
+	    
+	    <div id="footer">
+	    	<h2>footer</h2>	
+	    </div>
+    </div>
+    
+	
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var f = {
+    name: '후라이드 치킨', price: 18000,
+    description: '바삭하고 담백한 후라이드', src: '',
+    cat1: 1, cat2: 2, checkRec: 'Y', soldOut: 'N', closeTime: '22:00'
+  };
+  var el = function(id) { return document.getElementById(id); };
+  if (el('name')) el('name').value = f.name;
+  if (el('price')) el('price').value = f.price;
+  if (el('description')) el('description').value = f.description;
+  if (el('src')) el('src').value = f.src;
+  if (el('closeTime')) el('closeTime').value = f.closeTime;
+  var r1 = document.querySelector('input[name="category1Code"][value="'+f.cat1+'"]');
+  if (r1) r1.checked = true;
+  var r2 = document.querySelector('input[name="category2Code"][value="'+f.cat2+'"]');
+  if (r2) r2.checked = true;
+  var rec = document.querySelector('input[name="checkRec"][value="'+f.checkRec+'"]');
+  if (rec) rec.checked = true;
+  var so = document.querySelector('input[name="soldOut"][value="'+f.soldOut+'"]');
+  if (so) so.checked = true;
+});
+</script>
+
+</body>
+<script type="text/javascript" src="../../../user/menu/update/update.js"></script>
+</html>

@@ -1,0 +1,121 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../../../user/order/order/order.css">
+</head>
+<body>
+	
+  		<div id="modal" class="modal">
+  			
+	  			
+		  			
+		  				
+					        <p>메뉴 : </p>
+					    
+		  			
+		  			<p>id : </p>
+		  			<p>수량 : </p>
+		  			<p>가격 : </p>
+		  			<P>---</P>
+	  			
+  			
+  		</div>
+	
+	
+    <div id="background">
+    	<div id="header">
+    		<button onclick="location.href='../../../front?key=user&methodName=logout'" id="logOut" class="selectBtn">로그아웃</button>
+    	</div>
+    	
+	    <div id="select">
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllMenu'" id="menu" class="selectBtn">메뉴</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectSales&state=hour'" id="inform" class="selectBtn">정보</button>
+	    	<button id="qr" class="selectBtn">QR</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllOrder'" id="order" class="selectBtn">주문</button>
+	    </div>
+	    
+	    <div id="list">
+	    	<table>
+	    		<tr>
+	    			<th>주문 번호</th>
+	    			<th>주문 시간</th>
+	    			<th>가격</th>
+	    			<th>테이블</th>
+	    			<th>처리</th>
+	    		</tr>
+
+	    		
+	    			<tr>
+					    <td></td>
+					    <td></td>
+					    <td></td>
+					    <td></td>
+						<td class="process">
+		 					<button id="" class="modalBtn">확인</button>
+
+							<form action="../../../front">
+								<input type="hidden" value="user" name="key">
+								<input type="hidden" value="updateOrder" name="methodName">
+								<input type="hidden" value="completed" name="state">
+								<input type="hidden" value="" name="orderId">
+								<input type="hidden" value="" name="storeId">
+								<button>완료</button>
+							</form>
+							
+							<form action="../../../front">
+								<input type="hidden" value="user" name="key">
+								<input type="hidden" value="updateOrder" name="methodName">
+								<input type="hidden" value="cancelled" name="state">
+								<input type="hidden" value="" name="orderId">
+								<input type="hidden" value="" name="storeId">
+								<button>취소</button>
+							</form>
+						</td>
+					</tr>
+				
+	    	</table>
+	    </div>
+	    
+	    <div id="footer">
+	    	<h2>footer</h2>	
+	    </div>
+    </div>
+    
+	
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var orders = [
+    {id:101, time:'12:35:04', price:'37,000원', table:'3번'},
+    {id:102, time:'12:41:22', price:'19,000원', table:'1번'},
+    {id:103, time:'13:02:11', price:'21,000원', table:'5번'},
+    {id:104, time:'13:15:55', price:'18,000원', table:'2번'},
+  ];
+  var table = document.querySelector('#list table');
+  if (!table) return;
+  orders.forEach(function(o) {
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td>'+o.id+'</td>' +
+      '<td>'+o.time+'</td>' +
+      '<td>'+o.price+'</td>' +
+      '<td>'+o.table+'</td>' +
+      '<td class="process">' +
+        '<button class="modalBtn" type="button">확인</button>' +
+        '<form><button type="button">완료</button></form>' +
+        '<form><button type="button">취소</button></form>' +
+      '</td>';
+    table.appendChild(tr);
+  });
+});
+</script>
+
+</body>
+<script type="text/javascript" src="../../../user/order/order/order.js"></script>
+</html>

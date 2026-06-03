@@ -1,0 +1,105 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../../../user/qr/qr/qr.css">
+</head>
+<body>
+	<!--
+  		<div id="modal" class="modal">
+  			<p>메뉴명 : </p>
+  			<p>가격 : </p>
+  			<p>설명 : </p>
+  			<p>이미지 : </p>
+  			<p>분류1 : </p>
+  			<p>분류2 : </p>
+  			<p>추천 여부 : </p>
+  			<p>옵션 : </p>
+  			<p>마감 시간 : </p>
+  			<p>마감 여부 : </p>
+  		</div>
+	-->
+	
+	<div id="modalcreate" class="modal">
+		<form action="../../../front">
+			<input type="hidden" name="storeId" value="">
+			<input type="hidden" value="createTable" name="methodName">
+			<input type="hidden" value="user" name="key">
+			
+			<div class="formDiv">
+				<label for="tableNo">테이블 이름 : </label>
+				<input type="text" name="tableNo" id="tableNo">
+			</div>
+			
+			<button>테이블 추가</button>
+		</form>
+	</div>
+	
+    <div id="background">
+    	<div id="header">
+    		<button onclick="location.href='../../../front?key=user&methodName=logout'" id="logOut" class="selectBtn">로그아웃</button>
+    	</div>
+    	
+	    <div id="select">
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllMenu'" id="menu" class="selectBtn">메뉴</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectSales&state=hour'" id="inform" class="selectBtn">정보</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllQr&storeId='" id="qr" class="selectBtn">QR</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllOrder'" id="order" class="selectBtn">주문</button>
+	    </div>
+
+		<div id="subselect">
+			<h2>
+				<button id="create" class="modalBtn selectBtn">추가</button>
+			</h2>	
+		</div>
+	    <div id="list">
+			<div id="qrMain">
+				
+			  		<div id="modal" class="qrDiv">
+			  			<img alt="" src="">
+			  			
+			  				
+					        	<p></p>
+					    	
+			  			
+			  		</div>
+				
+			</div>
+	    </div>
+	    
+	    <div id="footer">
+	    	<h2>footer</h2>	
+	    </div>
+    </div>
+    
+	
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var qrs = [
+    {no:'1번 테이블', id:1},
+    {no:'2번 테이블', id:2},
+    {no:'3번 테이블', id:3},
+    {no:'VIP 룸',     id:4},
+  ];
+  var container = document.getElementById('qrMain');
+  if (!container) return;
+  qrs.forEach(function(q) {
+    var url = 'http://localhost:8888/index.html?table='+q.id;
+    var div = document.createElement('div');
+    div.className = 'qrDiv';
+    div.innerHTML =
+      '<img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data='+encodeURIComponent(url)+'" alt="QR">'+
+      '<p>'+q.no+'</p>';
+    container.appendChild(div);
+  });
+});
+</script>
+
+</body>
+<script type="text/javascript" src="../../../user/qr/qr/qr.js"></script>
+</html>

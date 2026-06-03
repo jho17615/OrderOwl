@@ -1,0 +1,115 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../../../user/menu/list/list.css">
+</head>
+<body>
+	
+  		<div id="modal" class="modal">
+  			<p>메뉴명 : </p>
+  			<p>가격 : </p>
+  			<p>설명 : </p>
+  			<p>이미지 : </p>
+  			<p>분류1 : </p>
+  			<p>분류2 : </p>
+  			<p>추천 여부 : </p>
+  			<p>옵션 : </p>
+  			<p>마감 시간 : </p>
+  			<p>마감 여부 : </p>
+  		</div>
+	
+	
+    <div id="background">
+    	<div id="header">
+    		<button onclick="location.href='../../../front?key=user&methodName=logout'" id="logOut" class="selectBtn">로그아웃</button>
+    	</div>
+    	
+	    <div id="select">
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllMenu'" id="menu" class="selectBtn">메뉴</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectSales&state=hour'" id="inform" class="selectBtn">정보</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllQr&storeId='" id="qr" class="selectBtn">QR</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllOrder'" id="order" class="selectBtn">주문</button>
+	    </div>
+	    
+	    <div id="subselect">
+	    	<h2>
+				<button onclick="location.href='../../../front?key=user&methodName=selectAllMenu'" id="menus" class="selectBtn">목록</button>
+				<button onclick="location.href='../../../user/menu/insert/insert.html'" id="insert" class="selectBtn">추가</button>
+			</h2>	    
+	    </div>
+	    
+	    <div id="list">
+	    	<table>
+	    		<tr>
+	    			<th>메뉴명</th>
+	    			<th>가격</th>
+	    			<th>설명</th>
+	    			<th>처리</th>
+	    		</tr>
+
+	    		
+	    			<tr>
+					    <td><button id="" class="modalBtn"></button></td>
+					    <td></td>
+					    <td></td>
+						<td class="process">
+							<form action="../../../front">
+								<input type="hidden" value="" name="menuId">
+								<input type="hidden" value="user" name="key">
+								<input type="hidden" value="deleteMenu" name="methodName">
+								<button>삭제</button>
+							</form>
+							
+							<form action="../../../front">
+								<input type="hidden" value="user" name="key">
+								<input type="hidden" value="selectById" name="methodName">
+								<input type="hidden" value="" name="menuId">
+								<button>수정</button>
+							</form>
+						</td>
+					</tr>
+				
+	    	</table>
+	    </div>
+	    
+	    <div id="footer">
+	    	<h2>footer</h2>	
+	    </div>
+    </div>
+    
+	
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var menus = [
+    {id:1, name:'후라이드 치킨', price:'18,000원', desc:'바삭하고 담백한 후라이드'},
+    {id:2, name:'양념 치킨',    price:'19,000원', desc:'달콤 매콤한 양념 소스'},
+    {id:3, name:'간장 치킨',    price:'20,000원', desc:'깊은 풍미의 간장 소스'},
+    {id:4, name:'콜라 (1.5L)', price:'3,000원',  desc:'시원한 탄산음료'},
+    {id:5, name:'치킨무',       price:'1,000원',  desc:'새콤달콤 치킨무 서비스'},
+  ];
+  var table = document.querySelector('#list table');
+  if (!table) return;
+  menus.forEach(function(m) {
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td><button class="modalBtn">'+m.name+'</button></td>' +
+      '<td>'+m.price+'</td>' +
+      '<td>'+m.desc+'</td>' +
+      '<td class="process">' +
+        '<form><button type="button">삭제</button></form>' +
+        '<form><button type="button">수정</button></form>' +
+      '</td>';
+    table.appendChild(tr);
+  });
+});
+</script>
+
+</body>
+<script type="text/javascript" src="../../../user/menu/list/list.js"></script>
+</html>

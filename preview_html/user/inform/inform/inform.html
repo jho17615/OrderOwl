@@ -1,0 +1,98 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="../../../user/inform/inform/inform.css">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+<script>
+    const salesData = {"9":50000,"10":85000,"11":120000,"12":200000,"13":175000,"14":90000,"15":60000};
+    const labels = Object.keys(salesData);
+    const dataValues = Object.values(salesData);
+    const state = "hour";
+</script>
+</head>
+<body>
+    <div id="background">
+    	<div id="header">
+    		<button onclick="location.href='../../../front?key=user&methodName=logout'" id="logOut" class="selectBtn"></button>
+    	</div>
+    	
+	    <div id="select">
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllMenu'" id="menu" class="selectBtn">메뉴</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectSales&state=hour'" id="inform" class="selectBtn">정보</button>
+	    	<button id="qr" class="selectBtn">QR</button>
+	    	<button onclick="location.href='../../../front?key=user&methodName=selectAllOrder'" id="order" class="selectBtn">주문</button>
+	    </div>
+	    
+	    <div id="list">
+	    	<div id="informMain">
+		    	<div id="informs">
+		    		<div id="informText">
+			    		<h1 class="mainText">매장이름 : </h1>
+			    		<p class="subText">주소 : </p>
+			    		<p class="subText">지역 : </p>
+			    		<p class="subText">번호 : </p>
+			    		<p class="subText">매장 정보 : </p>
+			    		<p class="subText">이름 : </p>
+		    		</div>
+		    		
+		    		<div id="informBtn">
+		    			<button onclick="location.href='../../../front?key=user&methodName=selectForUpdate'" id="informUpdate">수정</button>
+		    			<button onclick="location.href='../../../front?key=user&methodName=quitStore&userId='" id="informDelete">탈퇴</button>
+		    		</div>
+		    	</div>
+		    		
+	    		<div id="informGraph">
+   				    <div id="subselect">
+				    	<h2>
+							<!-- <button id="menu" class="selectBtn">메뉴별</button> -->
+							<button onclick="location.href='../../../front?key=user&methodName=selectSales&state=hour'" id="hour" class="selectBtn">시간별</button>
+							<button onclick="location.href='../../../front?key=user&methodName=selectSales&state=day'" id="day" class="selectBtn">일별</button>
+							<button onclick="location.href='../../../front?key=user&methodName=selectSales&state=week'" id="week" class="selectBtn">주별</button>
+							<button onclick="location.href='../../../front?key=user&methodName=selectSales&state=month'" id="month" class="selectBtn">월별</button>
+							<button onclick="location.href='../../../front?key=user&methodName=selectSales&state=year'" id="year" class="selectBtn">년별</button>
+						</h2>	    
+				    </div>
+				    
+				    <div id=mainChartDiv>
+		    			<canvas id="mainChart"></canvas>
+				    </div>
+				    
+				    <div id=subChartDiv>
+		    			<canvas id="subChart"></canvas>
+				    </div>
+	    		</div>
+	    	</div>
+	    </div>
+	    
+	    <div id="footer">
+	    	<h2>footer</h2>	
+	    </div>
+    </div>
+    
+	
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var map = {
+    'mainText': '매장이름 : 올빼미 치킨',
+  };
+  document.querySelectorAll('.mainText').forEach(function(el) {
+    el.textContent = '매장이름 : 올빼미 치킨';
+  });
+  document.querySelectorAll('.subText').forEach(function(el, i) {
+    var texts = ['주소 : 서울시 강남구 테헤란로 1', '지역 : 서울', '번호 : 02-1234-5678',
+                 '매장 정보 : 바삭한 치킨 전문점', '이름 : 김철수'];
+    if (texts[i]) el.textContent = texts[i];
+  });
+});
+</script>
+
+</body>
+
+<script type="text/javascript" src="../../../user/inform/inform/inform.js"></script>
+</html>
